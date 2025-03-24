@@ -1,0 +1,85 @@
+@use "sass:math";
+#body{
+ @for $i from 0 through 20 {
+  $k: '#{if($i < 10, "0#{$i}", $i)}';
+  $value: math.div($i, 10);
+
+  .m#{$k} {
+   margin: #{$value}rem;
+  }
+ 
+  .mlr#{$k} {
+   margin-left: #{$value}rem;
+   margin-right: #{$value}rem;
+  }
+ 
+  .ml#{$k} {
+   margin-left: #{$value}rem;
+  }
+ 
+  .mr#{$k} {
+   margin-right: #{$value}rem;
+  }
+ 
+  .mtb#{$k} {
+   margin-top: #{$value}rem;
+   margin-bottom: #{$value}rem;
+  }
+ 
+  .mt#{$k} {
+   margin-top: #{$value}rem;
+  }
+ 
+  .mb#{$k} {
+   margin-bottom: #{$value}rem;
+  }
+ }
+
+ @for $i from 0 through 10 {
+  $k: '#{if($i < 10, "0#{$i}", $i)}';
+  $value: math.div($i, 10)*-1;
+
+  .nm#{$k} {
+   margin: #{$value}rem;
+  }
+ 
+  .nmlr#{$k} {
+   margin-left: #{$value}rem;
+   margin-right: #{$value}rem;
+  }
+ 
+  .nml#{$k} {
+   margin-left: #{$value}rem;
+  }
+ 
+  .nmr#{$k} {
+   margin-right: #{$value}rem;
+  }
+ 
+  .nmtb#{$k} {
+   margin-top: #{$value}rem;
+   margin-bottom: #{$value}rem;
+  }
+ 
+  .nmt#{$k} {
+   margin-top: #{$value}rem;
+  }
+ 
+  .nmb#{$k} {
+   margin-bottom: #{$value}rem;
+  }
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

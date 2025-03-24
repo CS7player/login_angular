@@ -1,0 +1,31 @@
+@use '../basics/function' as *;
+#body .login-page{
+ .full-page{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: get-bg-color("black-ink");
+ }
+ .container{
+  // width: 30vw;
+  // height: 60vh;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0.2rem solid get-bg-color("blue-ink");
+  background-color: get-bg-color("white-ink");
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+  align-items: center;
+  row-gap: 1rem;
+  .full-width{
+   width: 100%;
+  }
+ }
+
+ @media(max-width:767px){
+  // nothing
+ }
+}

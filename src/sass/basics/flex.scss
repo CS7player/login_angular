@@ -1,0 +1,19 @@
+.df{
+ display: flex;
+ &.jc-center{
+  justify-content: center;
+ }
+ &.ai-center{
+  align-items: center;
+ }
+}
+
+
+
+.df-fd-c{
+ flex-direction: column;
+}
+
+.df-jc-sa{
+ justify-content: space-around;
+}

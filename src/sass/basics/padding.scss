@@ -1,0 +1,86 @@
+@use "sass:math";
+#body{
+ @for $i from 0 through 20 {
+  $k: '#{if($i < 10, "0#{$i}", $i)}';
+  $value: math.div($i, 10);
+
+  .p#{$k} {
+   padding: #{$value}rem;
+  }
+ 
+  .plr#{$k} {
+   padding-left: #{$value}rem;
+   padding-right: #{$value}rem;
+  }
+ 
+  .pl#{$k} {
+   padding-left: #{$value}rem;
+  }
+ 
+  .pr#{$k} {
+   padding-right: #{$value}rem;
+  }
+ 
+  .ptb#{$k} {
+   padding-top: #{$value}rem;
+   padding-bottom: #{$value}rem;
+  }
+ 
+  .pt#{$k} {
+   padding-top: #{$value}rem;
+  }
+ 
+  .pb#{$k} {
+   padding-bottom: #{$value}rem;
+  }
+ }
+
+ @for $i from 0 through 10 {
+  $k: '#{if($i < 10, "0#{$i}", $i)}';
+  $value: math.div($i, 10)*-1;
+
+  .np#{$k} {
+   padding: #{$value}rem;
+  }
+ 
+  .nplr#{$k} {
+   padding-left: #{$value}rem;
+   padding-right: #{$value}rem;
+  }
+ 
+  .npl#{$k} {
+   padding-left: #{$value}rem;
+  }
+ 
+  .npr#{$k} {
+   padding-right: #{$value}rem;
+  }
+ 
+  .nptb#{$k} {
+   padding-top: #{$value}rem;
+   padding-bottom: #{$value}rem;
+  }
+ 
+  .npt#{$k} {
+   padding-top: #{$value}rem;
+  }
+ 
+  .npb#{$k} {
+   padding-bottom: #{$value}rem;
+  }
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

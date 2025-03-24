@@ -1,0 +1,18 @@
+<div class="login-page">
+ <div class="full-page">
+  <div class="container">
+   <h1>Login</h1>
+   <div class="full-width">
+    <lib-text-field [ip_mdl]="username" (eventHandlerEmitter)="eventHandler($event)"></lib-text-field>
+   </div>
+   <div class="df ai-center">
+    <lib-text-field [ip_mdl]="password" (eventHandlerEmitter)="eventHandler($event)"></lib-text-field>
+    <lib-clicker [ip_md]="passwordClicker" (eventEmitter)="eventHandler($event)"></lib-clicker>
+   </div>
+   <lib-clicker [ip_md]="submitClicker" (eventEmitter)="eventHandler($event)"></lib-clicker>
+  </div>
+ </div>
+</div>
+
+<lib-loader [ip_mdl]="isLoader"></lib-loader>
+<app-notify [ip_mdl]="word"></app-notify>

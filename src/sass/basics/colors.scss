@@ -1,0 +1,38 @@
+$colors: (
+ "white-ink": #ffffff,
+ "black-ink": #000000,
+ "blue-ink": #0000ff,
+ "green-ink": #008000,
+ "red-ink": #ff0000,
+ "pink-ink": #ff69b4,
+ "yellow-ink": #ffff00,
+ "violet-ink": #8a2be2,
+ "orange-ink": #ffa500,
+ "purple-ink": #800080
+);
+
+
+@each $name, $color in $colors {
+ .#{$name} {
+  color: $color;
+ }
+}
+
+$bg-colors: (
+ "white-ink": #dcdcdc,
+ "black-ink": #333333,
+ "blue-ink": #87cefa,
+ "green-ink": #006400,
+ "red-ink": #8b0000,
+ "pink-ink": #ffb6c1,
+ "yellow-ink": #f0e68c,
+ "violet-ink": #9370db,
+ "orange-ink": #ffcc99,
+ "purple-ink": #4b0082
+);
+
+@each $name, $color in $bg-colors {
+ .bg-#{$name} {
+  background-color: $color;
+ }
+}

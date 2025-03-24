@@ -1,0 +1,23 @@
+@use 'function' as *;
+@use "sass:math";
+
+#body {
+ color: get-color("black-ink");
+ font-family: "jetBrains mono";
+
+
+ @for $i from 1 through 9 {
+  $k: '#{if($i < 10, "0#{$i}", $i)}';
+  $size-value: 1 + math.div($i, 10);
+  $weight-value: $i*100;
+
+  .fs#{$k} {
+   font-size: #{$size-value}rem;
+  }
+
+  .fw#{$k} {
+   font-weight: $weight-value;
+  }
+
+ }
+}
