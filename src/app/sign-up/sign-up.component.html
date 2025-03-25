@@ -1,7 +1,10 @@
 <div class="login-page">
  <div class="full-page">
-  <div class="container">
-   <h1>Sign Up</h1>
+  <div class="container pos-rel">
+   <div class="pos-ads right top">
+    <lib-clicker [ip_md]="closer"></lib-clicker>
+   </div>
+   <p class="fs09 fw09">Sign Up</p>
    <div class="full-width">
     <lib-text-field [ip_mdl]="username" (eventHandlerEmitter)="eventHandler($event)"></lib-text-field>
    </div>
@@ -22,4 +25,4 @@
 </div>
 
 <lib-loader [ip_mdl]="isLoader"></lib-loader>
-<!-- <app-notify [ip_mdl]="word"></app-notify> -->
+<lib-notify [ip_mdl]="word"></lib-notify>

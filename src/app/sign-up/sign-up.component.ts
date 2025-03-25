@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { InputType, LoaderComponent, UILoader, TextFieldComponent, UIClicker, UITextField, ClickerComponent } from '@cs7player/scrap-lib';
-import { ApiManagerService } from '../utils/api-manager.service';
-import { NotifyComponent } from "../notify/notify.component";
+import { ApiManagerService } from '@cs7player/scrap-lib';
+import { NotifyComponent } from '@cs7player/scrap-lib';
+import { Router } from '@angular/router';
 @Component({
  selector: 'app-sign-up',
  imports: [TextFieldComponent, ClickerComponent, LoaderComponent, NotifyComponent],
@@ -20,7 +21,9 @@ export class SignUpComponent implements OnInit {
  isConfirmPasswordShown: boolean = false;
  registerClicker !: UIClicker;
  isLoader: UILoader = new UILoader();
- constructor(private readonly api: ApiManagerService) { }
+ word: any = {};
+ closer!:UIClicker;
+ constructor(private readonly api: ApiManagerService,private readonly router : Router) { }
  ngOnInit() {
   this.setUpField();
  }
@@ -45,6 +48,11 @@ export class SignUpComponent implements OnInit {
 
   this.registerClicker = new UIClicker(7, 'Register');
   this.registerClicker['clClass'] = 'fw04 fs02';
+
+  this.closer = new UIClicker(8,"");
+  this.closer['icon'] = "fa-regular fa-circle-xmark";
+  this.closer['clClass'] = "p04";
+  this.closer['clStyles'] = "background:#f52b2b; border-radius:100%;border:none;"
  }
 
  eventHandler(event: any) {
@@ -68,5 +76,9 @@ export class SignUpComponent implements OnInit {
    }
    case 7: break;
   }
+ }
+
+ goToLogin(){
+  this.router.navigate(['login'])
  }
 }

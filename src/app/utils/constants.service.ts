@@ -5,7 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class ConstantsService {
 
- static lsToken = "token_data";
- static lsAuth = "auth";
- private readonly loginUrl: string = "http://localhost:3000";
+ static readonly lsToken = "token_data";
+ static readonly lsAuth = "auth";
+ static readonly NODE_URL: string = "http://localhost:3000";
+ static readonly LOGIN_URL:string = ConstantsService.NODE_URL+'/login';
+
+ static readonly NOTIFY : any = {
+  "warning":"bg-orange-ink white-ink",
+  "success":"bg-green-ink white-ink",
+  "danger":"bg-red-ink white-ink",
+  "notification":"bg-blue-ink white-ink"
+ }
+
 }

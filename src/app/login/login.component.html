@@ -1,7 +1,7 @@
 <div class="login-page">
  <div class="full-page">
   <div class="container">
-   <h1>Login</h1>
+   <p class="fs09 fw09">Login <i class="fa-solid fa-ghost"></i></p>
    <div class="full-width">
     <lib-text-field [ip_mdl]="username" (eventHandlerEmitter)="eventHandler($event)"></lib-text-field>
    </div>
@@ -9,10 +9,14 @@
     <lib-text-field [ip_mdl]="password" (eventHandlerEmitter)="eventHandler($event)"></lib-text-field>
     <lib-clicker [ip_md]="passwordClicker" (eventEmitter)="eventHandler($event)"></lib-clicker>
    </div>
+   <div class="df ai-center">
+    <p class="underline highlight">Forget Password?</p>&nbsp;
+    <p class="underline highlight" (click)="goToRegister()">Register</p>
+   </div>
    <lib-clicker [ip_md]="submitClicker" (eventEmitter)="eventHandler($event)"></lib-clicker>
   </div>
  </div>
 </div>
 
 <lib-loader [ip_mdl]="isLoader"></lib-loader>
-<app-notify [ip_mdl]="word"></app-notify>
+<lib-notify [ip_mdl]="word"></lib-notify>

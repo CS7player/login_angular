@@ -1,19 +1,41 @@
-.df{
+.df {
  display: flex;
- &.jc-center{
+
+ &.jc-center {
   justify-content: center;
  }
- &.ai-center{
+
+ &.ai-center {
   align-items: center;
  }
 }
 
 
 
-.df-fd-c{
+.df-fd-c {
  flex-direction: column;
 }
 
-.df-jc-sa{
+.df-jc-sa {
  justify-content: space-around;
+}
+
+.pos-rel {
+ position: relative;
+}
+
+.pos-ads {
+ position: absolute;
+
+ &.right {
+  right: -17px;
+
+  &.top {
+   top: -17px;
+  }
+
+  &.bottom {
+   bottom: -17px;
+  }
+ }
 }

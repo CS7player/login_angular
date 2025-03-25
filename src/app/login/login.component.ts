@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { InputType, LoaderComponent, UILoader, TextFieldComponent, UIClicker, UITextField, ClickerComponent } from '@cs7player/scrap-lib';
-import { ApiManagerService } from '../utils/api-manager.service';
-import { NotifyComponent } from "../notify/notify.component";
+import { ApiManagerService } from '@cs7player/scrap-lib';
+import { NotifyComponent } from '@cs7player/scrap-lib';
 import { UtilService } from '../utils/util.service';
+import { ConstantsService } from '../utils/constants.service';
+import { Router } from '@angular/router';
 @Component({
  selector: 'app-login',
  imports: [TextFieldComponent, ClickerComponent, LoaderComponent, NotifyComponent],
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
  submitClicker!: UIClicker;
  isLoader: UILoader = new UILoader();
  word: any = { text: '', color: "" };
- constructor(private readonly api: ApiManagerService) { }
+ notify_color : any = ConstantsService.NOTIFY;
+ constructor(private readonly api: ApiManagerService,private readonly router : Router) { }
  ngOnInit() {
   this.setUpField();
  }
@@ -49,7 +52,9 @@ export class LoginComponent implements OnInit {
     break;
    }
    case 5: {
-    this.validater();
+    if(this.validater()){
+     this.getLogin();
+    }
     break;
    }
   }
@@ -57,30 +62,50 @@ export class LoginComponent implements OnInit {
 
  getLogin() {
   let params = { "username": this.username['selectedValue'], "password": this.password['selectedValue'] };
-  let url = "http://localhost:3000/login";
+  let url = ConstantsService.LOGIN_URL;
   this.isLoader['isLoader'] = true;
   this.api.doPost(url, params).subscribe({
    next: (res) => {
     console.log(res);
     this.isLoader['isLoader'] = false;
+    if(res['status']){
+     UtilService.displayMessage({ text: "Login Successfully!!!", color: this.notify_color['success'] }, this.word)
+
+    }else{
+     UtilService.displayMessage({ text: "Wrong Credintals", color: this.notify_color['warning'] }, this.word)
+     this.clear();
+    }
    },
    error: (error) => {
-    console.log(error);
     this.isLoader['isLoader'] = false;
+    UtilService.displayMessage({ text: "Something went Wrong!!!", color: this.notify_color['danger'] }, this.word)
    }
   })
  }
 
  validater() {
   if (this.username['selectedValue'].length < 7) {
-   UtilService.displayMessage({ text: "Username is Short", color: "bg-red-ink white-ink" }, this.word)
+   UtilService.displayMessage({ text: "Username is Short", color: this.notify_color['warning'] }, this.word)
    return false;
   }
   if (this.password['selectedValue'].length < 7) {
-   UtilService.displayMessage({ text: "Password is Short", color: "bg-red-ink white-ink" }, this.word)
+   UtilService.displayMessage({ text: "Password is Short", color: this.notify_color['warning'] }, this.word)
    return false;
   }
   return true;
+ }
+
+ clear(){
+  this.username['selectedValue'] = '';
+  this.password['selectedValue'] = '';
+ }
+
+ goToRegister(){
+  this.router.navigate(['sign-up']);
+ }
+
+ goToForgetPassword(){
+  this.router.navigate(['forget-password']);
  }
 
 }

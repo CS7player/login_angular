@@ -5,7 +5,6 @@
  color: get-color("black-ink");
  font-family: "jetBrains mono";
 
-
  @for $i from 1 through 9 {
   $k: '#{if($i < 10, "0#{$i}", $i)}';
   $size-value: 1 + math.div($i, 10);
@@ -18,6 +17,14 @@
   .fw#{$k} {
    font-weight: $weight-value;
   }
-
  }
+
+ .underline {
+  text-decoration: underline;
+ }
+
+ .underline:hover{
+  color : get-color("blue-ink");
+ }
+
 }
