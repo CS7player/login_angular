@@ -27,15 +27,9 @@
 .pos-ads {
  position: absolute;
 
- &.right {
+ &.right-top {
   right: -17px;
-
-  &.top {
-   top: -17px;
-  }
-
-  &.bottom {
-   bottom: -17px;
-  }
+  top: -17px;
+  z-index: 2;
  }
 }

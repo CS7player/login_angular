@@ -1643,14 +1643,10 @@
 .pos-ads {
   position: absolute;
 }
-.pos-ads.right {
+.pos-ads.right-top {
   right: -17px;
-}
-.pos-ads.right.top {
   top: -17px;
-}
-.pos-ads.right.bottom {
-  bottom: -17px;
+  z-index: 2;
 }
 
 #body .login-page .full-page {
