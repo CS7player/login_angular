@@ -1,10 +1,10 @@
 <div class="login-page">
  <div class="full-page">
-  <div class="container pos-rel">
+  <div class="container pos-rel" @openVertical>
    <div class="pos-ads right top">
-    <lib-clicker [ip_md]="closer"></lib-clicker>
+    <lib-clicker [ip_md]="closer" (eventEmitter)="eventHandler($event)"></lib-clicker>
    </div>
-   <p class="fs09 fw09">Sign Up</p>
+   <p class="fs09 fw09">Sign Up <i class="fa-solid fa-address-card"></i></p>
    <div class="full-width">
     <lib-text-field [ip_mdl]="username" (eventHandlerEmitter)="eventHandler($event)"></lib-text-field>
    </div>

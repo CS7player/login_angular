@@ -3,11 +3,13 @@ import { InputType, LoaderComponent, UILoader, TextFieldComponent, UIClicker, UI
 import { ApiManagerService } from '@cs7player/scrap-lib';
 import { NotifyComponent } from '@cs7player/scrap-lib';
 import { Router } from '@angular/router';
+import { openVertical } from '../utils/animation';
 @Component({
  selector: 'app-sign-up',
  imports: [TextFieldComponent, ClickerComponent, LoaderComponent, NotifyComponent],
  templateUrl: './sign-up.component.html',
- styleUrls: []
+ styleUrls: [],
+ animations: [openVertical]
 })
 export class SignUpComponent implements OnInit {
 
@@ -75,6 +77,10 @@ export class SignUpComponent implements OnInit {
     break;
    }
    case 7: break;
+   case 8:{
+    this.goToLogin();
+    break;
+   }
   }
  }
 

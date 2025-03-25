@@ -141,6 +141,7 @@
 }
 #body .underline:hover {
   color: #0000ff;
+  cursor: pointer;
 }
 
 #body .m00 {

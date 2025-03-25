@@ -5,11 +5,13 @@ import { NotifyComponent } from '@cs7player/scrap-lib';
 import { UtilService } from '../utils/util.service';
 import { ConstantsService } from '../utils/constants.service';
 import { Router } from '@angular/router';
+import { openVertical } from '../utils/animation';
 @Component({
  selector: 'app-login',
  imports: [TextFieldComponent, ClickerComponent, LoaderComponent, NotifyComponent],
  templateUrl: './login.component.html',
- styleUrls: []
+ styleUrls: [],
+ animations:[openVertical]
 })
 export class LoginComponent implements OnInit {
 
