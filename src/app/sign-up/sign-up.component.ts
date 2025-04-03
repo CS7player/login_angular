@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { InputType, LoaderComponent, UILoader, TextFieldComponent, UIClicker, UITextField, ClickerComponent } from '@cs7player/scrap-lib';
 import { ApiManagerService } from '@cs7player/scrap-lib';
 import { NotifyComponent } from '@cs7player/scrap-lib';
 import { Router } from '@angular/router';
 import { openVertical } from '../utils/animation';
+import { ConstantsService } from '../utils/constants.service';
 @Component({
  selector: 'app-sign-up',
  imports: [TextFieldComponent, ClickerComponent, LoaderComponent, NotifyComponent],
@@ -76,7 +77,10 @@ export class SignUpComponent implements OnInit {
     this.isConfirmPasswordShown = !this.isConfirmPasswordShown;
     break;
    }
-   case 7: break;
+   case 7: {
+    this.sumbit();
+    break;
+   }
    case 8:{
     this.goToLogin();
     break;
@@ -86,5 +90,21 @@ export class SignUpComponent implements OnInit {
 
  goToLogin(){
   this.router.navigate(['login'])
+ }
+
+
+ sumbit(){
+  let params = {
+   "username":this.username['selectedValue'],
+   "mail":this.email['selectedValue'],
+   "password":this.newPassword['selectedValue']
+  }
+  this.api.doPost(ConstantsService.SIGN_UP_URL,params).subscribe({
+   next:(res:any)=>{
+    if(res['status']){
+     console.log(res);
+    }
+   }
+  })
  }
 }
