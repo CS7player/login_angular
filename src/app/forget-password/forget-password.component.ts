@@ -1,20 +1,19 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { InputType, LoaderComponent, UILoader, TextFieldComponent, UIClicker, UITextField, ClickerComponent } from '@cs7player/scrap-lib';
-import { ApiManagerService } from '@cs7player/scrap-lib';
-import { NotifyComponent } from '@cs7player/scrap-lib';
-import { Router } from '@angular/router';
+import { ClickerComponent, InputType, LoaderComponent, TextFieldComponent, UIClicker, UILoader, UITextField } from '@cs7player/scrap-lib';
 import { openVertical } from '../utils/animation';
-import { ConstantsService } from '../utils/constants.service';
+import { Router } from '@angular/router';
+
 @Component({
- selector: 'app-sign-up',
- imports: [TextFieldComponent, ClickerComponent, LoaderComponent, NotifyComponent],
- templateUrl: './sign-up.component.html',
+ selector: 'app-forget-password',
+ imports: [ClickerComponent,TextFieldComponent,LoaderComponent],
+ templateUrl: './forget-password.component.html',
  styleUrls: [],
  animations: [openVertical]
 })
-export class SignUpComponent implements OnInit {
+export class ForgetPasswordComponent implements OnInit {
 
- tf_username !: UITextField;
+ private router = inject(Router);
+ closer!: UIClicker;
  tf_email !: UITextField;
  tf_newPassword !: UITextField;
  cl_newPasswordClicker !: UIClicker;
@@ -22,18 +21,12 @@ export class SignUpComponent implements OnInit {
  tf_confirmPassword !: UITextField;
  cl_confirmPasswordClicker !: UIClicker;
  isConfirmPasswordShown: boolean = false;
- cl_registerClicker !: UIClicker;
+ cl_submitClicker !: UIClicker;
  isLoader: UILoader = new UILoader();
- word: any = { text: "working", 'color': 'sucess' };
- closer!: UIClicker;
- constructor(private readonly api: ApiManagerService, private readonly router: Router) { }
  ngOnInit() {
   this.setUpField();
  }
  setUpField() {
-  this.tf_username = new UITextField(1, '', InputType.Text);
-  this.tf_username['placeHolder'] = 'Username';
-
   this.tf_email = new UITextField(2, '', InputType.Text);
   this.tf_email['placeHolder'] = 'Email';
 
@@ -49,8 +42,8 @@ export class SignUpComponent implements OnInit {
   this.cl_confirmPasswordClicker = new UIClicker(6, "");
   this.cl_confirmPasswordClicker['icon'] = "fa-solid fa-eye";
 
-  this.cl_registerClicker = new UIClicker(7, 'Register');
-  this.cl_registerClicker['clClass'] = 'fw04 fs02';
+  this.cl_submitClicker = new UIClicker(7, 'Submit');
+  this.cl_submitClicker['clClass'] = 'fw04 fs02';
 
   this.closer = new UIClicker(8, "");
   this.closer['icon'] = "fa-regular fa-circle-xmark";
@@ -78,7 +71,7 @@ export class SignUpComponent implements OnInit {
     break;
    }
    case 7: { 
-    this.sumbit();
+    // this.sumbit();
     break;
    }
    case 8: {
@@ -90,22 +83,5 @@ export class SignUpComponent implements OnInit {
 
  goToLogin() {
   this.router.navigate(['login'])
- }
-
- sumbit() {
-  this.isLoader['isLoader'] = true;
-  let params = {
-   "username": this.tf_username['selectedValue'],
-   "mail": this.tf_email['selectedValue'],
-   "password": this.tf_newPassword['selectedValue']
-  }
-  this.api.doPost(ConstantsService.SIGN_UP_URL, params).subscribe({
-   next: (res: any) => {
-    if (res['status']) {
-     console.log(res);
-     this.isLoader['isLoader'] = false;
-    }
-   }
-  })
  }
 }

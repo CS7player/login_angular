@@ -10,7 +10,7 @@
     <lib-clicker [ip_md]="passwordClicker" (eventEmitter)="eventHandler($event)"></lib-clicker>
    </div>
    <div class="df ai-center">
-    <p class="underline highlight">Forget Password?</p>&nbsp;
+    <p class="underline highlight" (click)="goToForgetPassword()">Forget Password?</p>&nbsp;
     <p class="underline highlight" (click)="goToRegister()">Register</p>
    </div>
    <lib-clicker [ip_md]="submitClicker" (eventEmitter)="eventHandler($event)"></lib-clicker>
