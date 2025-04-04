@@ -68,13 +68,12 @@ export class LoginComponent implements OnInit {
   this.isLoader['isLoader'] = true;
   this.api.doPost(url, params).subscribe({
    next: (res) => {
-    console.log(res);
     this.isLoader['isLoader'] = false;
     if(res['status']){
      UtilService.displayMessage({ text: "Login Successfully!!!", color: this.notify_color['success'] }, this.word)
-
+     this.router.navigate(['layout']);
     }else{
-     UtilService.displayMessage({ text: "Wrong Credintals", color: this.notify_color['warning'] }, this.word)
+     UtilService.displayMessage({ text: res['msg'], color: this.notify_color['warning'] }, this.word)
      this.clear();
     }
    },

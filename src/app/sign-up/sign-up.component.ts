@@ -102,9 +102,11 @@ export class SignUpComponent implements OnInit {
   this.api.doPost(ConstantsService.SIGN_UP_URL, params).subscribe({
    next: (res: any) => {
     if (res['status']) {
-     console.log(res);
      this.isLoader['isLoader'] = false;
     }
+   },
+   error:(err :any)=>{
+    this.isLoader['isLoader'] = false;
    }
   })
  }
