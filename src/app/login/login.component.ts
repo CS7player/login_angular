@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InputType, LoaderComponent, UILoader, TextFieldComponent, UIClicker, UITextField, ClickerComponent } from '@cs7player/scrap-lib';
+import { InputType,LsManagerService, LoaderComponent, UILoader, TextFieldComponent, UIClicker, UITextField, ClickerComponent } from '@cs7player/scrap-lib';
 import { ApiManagerService } from '@cs7player/scrap-lib';
 import { NotifyComponent } from '@cs7player/scrap-lib';
 import { UtilService } from '../utils/util.service';
@@ -70,6 +70,7 @@ export class LoginComponent implements OnInit {
    next: (res) => {
     this.isLoader['isLoader'] = false;
     if(res['status']){
+     LsManagerService.addJsonToLS(ConstantsService.LS_TOKEN_KEY,res['jwt_token']);
      UtilService.displayMessage({ text: "Login Successfully!!!", color: this.notify_color['success'] }, this.word)
      this.router.navigate(['layout']);
     }else{

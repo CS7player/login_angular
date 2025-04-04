@@ -18,4 +18,6 @@ export class ConstantsService {
   "notification":"bg-blue-ink white-ink"
  }
 
+ static readonly LS_TOKEN_KEY = "ls_token";
+
 }
